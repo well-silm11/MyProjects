@@ -1,0 +1,128 @@
+﻿
+@using Dashboard.Models
+
+@model DashboardModel
+
+@{
+    ViewBag.Title = "Dashboard";
+
+}
+
+    <link href="~/Content/Site/Site.index.min.css" rel="stylesheet" />
+
+<div class="col-md-12">
+
+    <h1 class="c-title" style="margin-bottom:30px; margin-top: 20px; text-align:center; font:italic bold; ">
+        Dashboard do Negão
+    </h1>
+
+    <div id="rl" style="text-align:right;">
+
+        <button type="button" class="btn btn-primary" id="reload">
+            Recaregar
+        </button>
+    </div>
+</div>
+
+
+<div class="card" id="formulario">
+    <div class="card-body">
+
+        <div class="row">
+            <div id="formularios">
+                <div class="col-md-12" id="name">
+
+
+
+                    <div class="col-md-4" style=" margin-top:6.5px;">
+
+                        @Html.Label("Nome da Empresa")<br />
+                        @Html.TextBox("nome", Model.nome, new { @placeholder = "Nome da Empresa..." })
+                    </div>
+                    <div class="col-md-4">
+
+
+
+                        @Html.Label("Classe")<br />
+                        @Html.DropDownList("classe",
+                         new SelectList(Enum.GetValues(typeof(ListClass))),
+                         "Selecionar...",
+                         new { @class = "form-control" })
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-12" id="addemp" hidden>
+
+                </div>
+                <div id="projetar" class="col-md-10" hidden>
+                    <br />
+                    <div class="col-md-3">
+
+                        <label>Inicio de suprimento </label><br />
+                        @Html.TextBox("InicioSuprimento", Model.InicioSuprimento, new { @placeholder = "00/0000" })
+                    </div>
+                    <div class="col-md-4">
+                        <label>Fim de suprimento </label><br />
+                        @Html.TextBox("FimSuprimento", Model.InicioSuprimento, new { @placeholder = "00/0000" })
+                        <button type="button" class="btn btn-primary" id="gerar">
+                            Simular
+                        </button>
+                    </div>
+                </div>
+                <div id="testec" class=" col-md-12" hidden>
+                    <div class="col-md-10" style="top:10px;">
+                        <form id="teste"></form>
+
+                        <div class="col-md-12"></div>
+
+
+                        <form id="testecd"></form>
+
+
+                        <div class="col-md-12"></div>
+
+
+                        <form id="testegr"></form>
+
+                    </div>
+                    <button type="button" class="btn btn-primary" id="graphic">
+                        Gerar grafico
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="col-md-12 text-right" id="balanco">
+                <br />
+                <br />
+            </div>
+
+            <div class="col-md-12" id="gra">
+
+                <button type="button" class="btn btn-primary" id="btn-gerar-pdf">
+                    Gerar PDF
+                </button>
+                <canvas class="line-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript"></script>
+<script src="~/Scripts/jquery.moneymask.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+<script src="https://github.com/chfw/pyecharts-snapshot/blob/master/pyecharts_snapshot/phantomjs/snapshot.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
